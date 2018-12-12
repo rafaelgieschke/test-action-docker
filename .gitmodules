@@ -1,0 +1,6 @@
+[submodule "libsdl-eaas"]
+	path = libsdl-eaas
+	url = https://gitlab.com/emulation-as-a-service/libsdl-eaas
+[submodule "guacamole-server-eaas"]
+	path = guacamole-server-eaas
+	url = https://gitlab.com/emulation-as-a-service/guacamole-server-eaas

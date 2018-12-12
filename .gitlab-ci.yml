@@ -8,14 +8,16 @@ services:
 
 build:
   script:
-  - export CI_APPLICATION_REPOSITORY="$CI_REGISTRY_IMAGE/$CI_COMMIT_REF_SLUG"
-  - export CI_APPLICATION_TAG="$CI_COMMIT_SHA"
+  - export CI_APPLICATION_REPOSITORY="$CI_REGISTRY_IMAGE"
+  - export CI_APPLICATION_TAG="git-$CI_COMMIT_SHA"
   - docker build -t build .
+  - docker tag build "$CI_APPLICATION_REPOSITORY:$CI_COMMIT_REF_SLUG"
   - docker tag build "$CI_APPLICATION_REPOSITORY:$CI_APPLICATION_TAG"
   - docker tag build "$CI_APPLICATION_REPOSITORY:latest"
   - docker login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD" "$CI_REGISTRY"
-  - docker push "$CI_APPLICATION_REPOSITORY:$CI_APPLICATION_TAG" 
-  - docker push "$CI_APPLICATION_REPOSITORY:latest"
+  - docker push "$CI_APPLICATION_REPOSITORY:$CI_COMMIT_REF_SLUG"
+  - docker push "$CI_APPLICATION_REPOSITORY:$CI_APPLICATION_TAG"
+  - if test "$CI_COMMIT_REF_SLUG" = "master"; then docker push "$CI_APPLICATION_REPOSITORY:latest"; fi
   #- docker export $(docker create build) | gzip > ../container.tar.gz
   #artifacts:
   #  paths:

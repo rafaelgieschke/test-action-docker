@@ -34,7 +34,9 @@ build:
   - docker push "$CI_APPLICATION_REPOSITORY:$CI_COMMIT_REF_SLUG"
   - if test "$CI_COMMIT_REF_SLUG" = "master"; then docker push "$CI_APPLICATION_REPOSITORY:latest"; fi
 
-  #- docker export $(docker create build) | gzip > ../container.tar.gz
-  #artifacts:
-  #  paths:
-  #  - container.tar.gz
+  - docker run --rm -v "$(pwd)":/mnt busybox cp /bin/busybox /mnt
+  - docker run --rm -v "$(pwd)":/mnt -v "$(pwd)"/busybox:/busybox --entrypoint /busybox build cp -R /opt/. /mnt
+
+  artifacts:
+    paths:
+    - .

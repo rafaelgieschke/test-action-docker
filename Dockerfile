@@ -5,5 +5,6 @@ run apt-get update && DEBIAN_FRONTEND="noninteractive" apt-get -y install \
 workdir /src
 copy linux /src
 run make -C tools/lkl
-#from scratch
-#copy tools/lkl/ 
+
+from ubuntu
+copy --from=0 /src/tools/lkl/lklfuse /opt/

@@ -34,7 +34,7 @@ build:
   - docker push "$CI_APPLICATION_REPOSITORY:$CI_COMMIT_REF_SLUG"
   - if test "$CI_COMMIT_REF_SLUG" = "master"; then docker push "$CI_APPLICATION_REPOSITORY:latest"; fi
 
-  - docker run --rm -v busybox:/bin busybox
+  - docker volume rm busybox; docker run --rm -v busybox:/bin busybox
   - docker run --rm -v busybox:/busybox -v "$(pwd)":/mnt --entrypoint /busybox/busybox build cp -R /opt/. /mnt
 
   artifacts:

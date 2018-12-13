@@ -19,7 +19,8 @@ build:
   # CI_REGISTRY_IMAGE to "username/repository",
   # CI_REGISTRY_USER, and CI_REGISTRY_PASSWORD
   # via Settings > CI/CD > Variables.
-  - export CI_REGISTRY="$(echo "$CI_REGISTRY_IMAGE" | grep -oE '^[^/]+\.[^/]+')"; : "${CI_REGISTRY:=docker.io}"
+  - export CI_REGISTRY="$(echo "$CI_REGISTRY_IMAGE" | grep -oE '^[^/]+\.[^/]+')"
+  - ': "${CI_REGISTRY:=docker.io}"'
   - if test "$CI_REGISTRY" = "docker.io" -a -n "$CI_DOCKERHUB_USER"; then
     export CI_REGISTRY_USER="$CI_DOCKERHUB_USER" CI_REGISTRY_PASSWORD="$CI_DOCKERHUB_PASSWORD"; fi
   - docker login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD" "$CI_REGISTRY"

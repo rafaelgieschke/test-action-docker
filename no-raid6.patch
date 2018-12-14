@@ -1,0 +1,14 @@
+diff --git a/lib/raid6/algos.c b/lib/raid6/algos.c
+index 9bdf59799d0b..9eb9913f03fe 100644
+--- a/lib/raid6/algos.c
++++ b/lib/raid6/algos.c
+@@ -231,6 +231,9 @@ static inline const struct raid6_calls *raid6_choose_gen(
+ 
+ int __init raid6_select_algo(void)
+ {
++	/* Do not run the expensive RAID6 algorithm search */
++	return -EINVAL;
++
+ 	const int disks = (65536/PAGE_SIZE)+2;
+ 
+ 	const struct raid6_calls *gen_best;

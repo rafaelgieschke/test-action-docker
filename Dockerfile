@@ -7,5 +7,5 @@ copy linux /src
 run make -C tools/lkl
 
 from ubuntu
-run apt-get update && DEBIAN_FRONTEND="noninteractive" apt-get -y install libfuse && apt-get clean
+run apt-get update && DEBIAN_FRONTEND="noninteractive" apt-get -y install fuse && apt-get clean
 copy --from=0 /src/tools/lkl/lklfuse /opt/

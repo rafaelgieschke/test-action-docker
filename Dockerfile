@@ -7,7 +7,7 @@ run apt-get update && DEBIAN_FRONTEND="noninteractive" apt-get -y install \
 workdir /src
 copy . .
 
-workdir /src/linux
+workdir linux
 run git apply ../no-raid6.patch
 run make -C tools/lkl
 

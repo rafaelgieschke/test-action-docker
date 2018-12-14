@@ -13,5 +13,5 @@ run make -C tools/lkl
 
 from ubuntu
 run apt-get update && DEBIAN_FRONTEND="noninteractive" apt-get -y install fuse && apt-get clean
-copy --from=0 /src/tools/lkl/lklfuse /src/tools/lkl/cptofs /src/tools/lkl/fs2tar /opt/lkl/
+copy --from=0 /src/linux/tools/lkl/lklfuse /src/linux/tools/lkl/cptofs /src/linux/tools/lkl/fs2tar /opt/lkl/
 env PATH="/opt/lkl:${PATH}"

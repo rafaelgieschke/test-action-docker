@@ -3,10 +3,12 @@ run apt-get update && DEBIAN_FRONTEND="noninteractive" apt-get -y install \
   build-essential bison flex bc python \
   libfuse-dev libarchive-dev xfsprogs \
   git
+
 workdir /src
-copy linux /src
-copy no-raid6.patch /src
-run git apply no-raid6.patch
+copy . .
+
+workdir /src/linux
+run git apply ../no-raid6.patch
 run make -C tools/lkl
 
 from ubuntu

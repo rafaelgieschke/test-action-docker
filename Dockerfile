@@ -8,7 +8,7 @@ workdir /src
 copy . .
 
 workdir linux
-run git apply ../no-raid6.patch
+run git apply ../*.patch
 run make -C tools/lkl
 run cd tools/lkl && ln -s cptofs cpfromfs
 

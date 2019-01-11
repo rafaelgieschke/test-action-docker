@@ -9,7 +9,7 @@ copy . .
 
 workdir linux
 run git apply ../*.patch
-run cat ../defconfig.add >> arch/lkl/defconfig
+run cat ../defconfig.append >> arch/lkl/defconfig
 run make -C tools/lkl
 run cd tools/lkl && ln -s cptofs cpfromfs
 

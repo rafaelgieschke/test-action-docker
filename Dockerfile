@@ -1,4 +1,4 @@
-from registry.gitlab.com/emulation-as-a-service/emulators/emulators-base
+from testbase
 
 RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y --force-yes \
 build-essential \
@@ -11,7 +11,7 @@ workdir /qemu
 run curl "https://download.qemu.org/qemu-3.1.0.tar.xz" | tar xJ --strip-components=1
 run ./configure --with-sdlabi=1.2 --prefix=/usr --audio-drv-list=sdl,pa --enable-sdl --enable-vde \
 --target-list=i386-softmmu,x86_64-softmmu,ppc-softmmu,ppc64-softmmu
-run make install 
+run make install -j 'echo $nproc --all'
 
 workdir /
 run rm -rf /qemu

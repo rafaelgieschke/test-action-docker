@@ -1,4 +1,4 @@
-from testbase
+from registry.gitlab.com/emulation-as-a-service/emulators/emulators-base
 
 RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y --force-yes \
 build-essential \

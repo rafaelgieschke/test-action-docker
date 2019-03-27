@@ -19,3 +19,5 @@ run make install
 workdir /
 run rm -rf /qemu
 run apt-get clean
+
+add metadata /metadata

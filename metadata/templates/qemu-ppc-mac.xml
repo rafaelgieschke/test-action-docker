@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ns2:emulationEnvironmentTemplate xmlns:ns2="http://bwfla.bwl.de/common/datatypes">
+    <ns2:id>qemu-macos9</ns2:id>
+    <ns2:description>
+	    <ns2:title>QEMU Mac OS 8/9/10.0-10.4 (PPC Qemu)</ns2:title>
+        <ns2:os>mac</ns2:os>
+    </ns2:description>
+    <ns2:metaDataVersion>1</ns2:metaDataVersion>
+    <ns2:arch>ppc</ns2:arch>
+    <ns2:model xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+    <ns2:emulator bean="Qemu"/>
+    <ns2:ui_options>
+        <ns2:html5>
+            <ns2:pointer_lock>true</ns2:pointer_lock>
+            <ns2:crt></ns2:crt>
+        </ns2:html5>
+        <ns2:input required="false">
+            <ns2:clientKbdLayout>en</ns2:clientKbdLayout>
+        </ns2:input>
+    </ns2:ui_options>
+    <ns2:operatingSystemId xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+    <ns2:drive>
+        <ns2:data>binding://main_hdd</ns2:data>
+        <ns2:iface>ide</ns2:iface>
+        <ns2:bus>0</ns2:bus>
+        <ns2:unit>0</ns2:unit>
+        <ns2:type>disk</ns2:type>
+        <ns2:boot>false</ns2:boot>
+        <ns2:plugged>true</ns2:plugged>
+    </ns2:drive>
+    <ns2:drive>
+        <ns2:data></ns2:data>
+        <ns2:iface>ide</ns2:iface>
+        <ns2:bus>1</ns2:bus>
+        <ns2:unit>1</ns2:unit>
+        <ns2:type>cdrom</ns2:type>
+        <ns2:filesystem>ISO</ns2:filesystem>
+        <ns2:boot>true</ns2:boot>
+        <ns2:plugged>true</ns2:plugged>
+    </ns2:drive>
+  <ns2:nativeConfig>-M mac99 -m 256M -device usb-mouse -prom-env 'auto-boot?=true' -prom-env 'boot-args=-v' -prom-env 'vga-ndrv?=true' -device usb-kbd -net user -net nic,model=sungem -g 1024x786x32</ns2:nativeConfig>
+</ns2:emulationEnvironmentTemplate>

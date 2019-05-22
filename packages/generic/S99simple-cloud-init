@@ -1,5 +1,7 @@
 #!/bin/sh
 
+if test "$1" != "start"; then exit 0; fi
+
 blkid="$(blkid)"
 
 nocloud="$(echo "$blkid" | grep 'cidata\|CIDATA' | cut -d : -f 1)"

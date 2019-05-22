@@ -1,0 +1,30 @@
+image: docker
+
+variables:
+  GIT_SUBMODULE_STRATEGY: recursive
+
+services:
+- docker:dind
+
+build:
+  script:
+  - export CI_APPLICATION_REPOSITORY="$CI_REGISTRY_IMAGE"
+  - export CI_APPLICATION_TAG="git-$CI_COMMIT_SHA"
+  - docker build -t build . 2>&1 | tee log.txt | head -c 1000000
+  - docker tag build "$CI_APPLICATION_REPOSITORY:$CI_APPLICATION_TAG"
+  - docker tag build "$CI_APPLICATION_REPOSITORY:$CI_COMMIT_REF_SLUG"
+  - docker tag build "$CI_APPLICATION_REPOSITORY:latest"
+  - docker login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD" "$CI_REGISTRY"
+  - docker push "$CI_APPLICATION_REPOSITORY:$CI_APPLICATION_TAG"
+  - docker push "$CI_APPLICATION_REPOSITORY:$CI_COMMIT_REF_SLUG"
+  - if test "$CI_COMMIT_REF_SLUG" = "master"; then docker push "$CI_APPLICATION_REPOSITORY:latest"; fi
+
+  - mv log.txt /
+  - rm -rf .* * || true
+  - mv /log.txt .
+  - docker cp "$(docker create build)":/opt/. .
+
+  artifacts:
+    when: always
+    paths:
+    - "*"

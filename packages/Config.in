@@ -1,0 +1,2 @@
+source "$BR2_EXTERNAL_PACKAGES_PATH/generic/Config.in"
+source "$BR2_EXTERNAL_PACKAGES_PATH/kernel-uncompressed/Config.in"

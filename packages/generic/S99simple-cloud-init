@@ -1,0 +1,32 @@
+#!/bin/sh
+
+blkid="$(blkid)"
+
+nocloud="$(echo "$blkid" | grep 'cidata\|CIDATA' | cut -d : -f 1)"
+configdrive="$(echo "$blkid" | grep 'config-2\|CONFIG-2' | cut -d : -f 1)"
+
+MOUNTP="/mnt-cloud-init"
+DEST="/cloud-init-user-data"
+
+mkdir -p "$MOUNTP"
+
+if test "$nocloud"; then
+  mount "$nocloud" "$MOUNTP"
+  cp "$MOUNTP"/user-data "$DEST"
+  umount "$MOUNTP"
+elif test "$configdrive"; then
+  mount "$configdrive" "$MOUNTP"
+  cp "$MOUNTP"/openstack/latest/user_data "$DEST"
+  umount "$MOUNTP"
+else
+  avahi-autoipd -D -w eth0
+  if ! curl http://169.254.169.254/latest/user-data -o "$DEST"; then
+    echo Could not get cloud-init data.
+    exit 1
+  fi
+fi
+
+chmod +x "$DEST"
+
+cd /
+"$DEST"

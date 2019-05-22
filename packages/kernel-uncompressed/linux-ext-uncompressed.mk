@@ -1,0 +1,10 @@
+KERNEL_UNCOMPRESSED_VERSION=0.1
+KERNEL_UNCOMPRESSED_SOURCE=
+
+LINUX_EXTENSIONS += uncompressed
+define UNCOMPRESSED_PREPARE_KERNEL
+	$(APPLY_PATCHES) $(@D) $(KERNEL_UNCOMPRESSED_PKGDIR) \
+		uncompressed-kernel.patch
+endef
+
+$(eval $(generic-package))

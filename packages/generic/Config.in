@@ -1,0 +1,4 @@
+config BR2_PACKAGE_GENERIC
+	bool "generic"
+	help
+	  Generic package.

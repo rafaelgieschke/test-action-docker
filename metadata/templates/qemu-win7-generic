@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <ns2:emulationEnvironmentTemplate xmlns:ns2="http://bwfla.bwl.de/common/datatypes">
-    <ns2:id>win7_generic</ns2:id>
+    <ns2:id>qemu-win7-generic</ns2:id>
     <ns2:description>
         <ns2:title>Windows 7 (generic ide)</ns2:title>
         <ns2:os>win7</ns2:os>

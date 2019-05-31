@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <ns2:emulationEnvironmentTemplate xmlns:ns2="http://bwfla.bwl.de/common/datatypes">
-    <ns2:id>pc:qemu:basic</ns2:id>
+    <ns2:id>pc90</ns2:id>
     <ns2:description>
         <ns2:title>Generic 90s PC</ns2:title>
     </ns2:description>

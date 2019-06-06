@@ -49,16 +49,5 @@
         <ns2:plugged>false</ns2:plugged>
     </ns2:drive>
     <ns2:nativeConfig>-m 512 -enable-kvm -usb -usbdevice tablet -soundhw ac97 -net nic,model=rtl8139 -net user </ns2:nativeConfig>
-    <ns2:imageGeneralization>
-        <ns2:modificationScript>patchXP.sh</ns2:modificationScript>
-	<ns2:precondition>
-		<ns2:fileSystem>ntfs</ns2:fileSystem>
-        	<ns2:partitionLabel></ns2:partitionLabel>
-	        <ns2:requiredFiles>			
-			<ns2:fileName>/WINDOWS/system32/config/system</ns2:fileName>
-			<ns2:fileName>/WINDOWS/system32/drivers</ns2:fileName>
-            </ns2:requiredFiles>
-	</ns2:precondition>
-    </ns2:imageGeneralization>
 </ns2:emulationEnvironmentTemplate>
 

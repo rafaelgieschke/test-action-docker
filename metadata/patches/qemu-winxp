@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ns2:generalizationPatch xmlns:ns2="http://bwfla.bwl.de/common/datatypes">
+    <ns2:id>qemu-winxp</ns2:id>
+    <ns2:timestamp>2019-06-05T17:33:49.117Z</ns2:timestamp>
+    <ns2:description>
+        <ns2:title>WinXP (IDE generic)</ns2:title>
+    </ns2:description>
+    <ns2:metaDataVersion>1</ns2:metaDataVersion>
+    <ns2:configurationType>de.bwl.bwfla.emucomp.api.GeneralizationPatch</ns2:configurationType>
+    <ns2:imageGeneralization>
+        <ns2:modificationScript>patchXP.sh</ns2:modificationScript>
+        <ns2:precondition>
+            <ns2:fileSystem>ntfs</ns2:fileSystem>
+            <ns2:partitionLabel></ns2:partitionLabel>
+            <ns2:requiredFiles>
+                <ns2:fileName>/WINDOWS/system32/config/system</ns2:fileName>
+                <ns2:fileName>/WINDOWS/system32/drivers</ns2:fileName>
+            </ns2:requiredFiles>
+        </ns2:precondition>
+    </ns2:imageGeneralization>
+</ns2:generalizationPatch>

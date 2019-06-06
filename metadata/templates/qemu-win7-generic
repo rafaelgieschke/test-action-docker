@@ -49,15 +49,5 @@
         <ns2:plugged>false</ns2:plugged>
     </ns2:drive>
     <ns2:nativeConfig>-usb -enable-kvm -usbdevice tablet -vga cirrus -soundhw sb16 -net nic,model=rtl8139 -net user -m 1500</ns2:nativeConfig>
-    <ns2:imageGeneralization>
-        <ns2:modificationScript>patch-win7.sh</ns2:modificationScript>
-	<ns2:precondition>
-		<ns2:fileSystem>ntfs</ns2:fileSystem>
-        	<ns2:partitionLabel></ns2:partitionLabel>
-	        <ns2:requiredFiles>
-			<ns2:fileName>/Windows/System32/config/SYSTEM</ns2:fileName>			
-                </ns2:requiredFiles>
-	</ns2:precondition>
-    </ns2:imageGeneralization>
 </ns2:emulationEnvironmentTemplate>
 

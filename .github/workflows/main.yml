@@ -17,15 +17,15 @@ jobs:
         echo test, and deploy your project.
 
   build2:
-  runs-on: ubuntu-latest
-  steps:
-    - uses: actions/checkout@master
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@master
 
-    - run: mkdir -p path/to/artifact
+      - run: mkdir -p path/to/artifact
 
-    - run: echo hello > path/to/artifact/world.txt
+      - run: echo hello > path/to/artifact/world.txt
 
-    - uses: actions/upload-artifact@master
-      with:
-        name: my-artifact
-        path: path/to/artifact
+      - uses: actions/upload-artifact@master
+        with:
+          name: my-artifact
+          path: path/to/artifact

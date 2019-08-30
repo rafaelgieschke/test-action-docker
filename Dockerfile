@@ -15,9 +15,9 @@ copy packages packages
 workdir /root/buildroot
 
 copy .config *.append ./
-run make BR2_EXTERNAL="/root/packages" BR2_JLEVEL="$(nproc)" olddefconfig
+run FORCE_UNSAFE_CONFIGURE=1 make BR2_EXTERNAL="/root/packages" BR2_JLEVEL="$(nproc)" olddefconfig
 
 from env
-run make BR2_EXTERNAL="/root/packages" BR2_JLEVEL="$(nproc)"
+run FORCE_UNSAFE_CONFIGURE=1 make BR2_EXTERNAL="/root/packages" BR2_JLEVEL="$(nproc)"
 
 run cp output/images/disk.img /opt/

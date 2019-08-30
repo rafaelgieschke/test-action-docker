@@ -1,0 +1,11 @@
+#!/bin/sh
+
+PREFIX="$(cd -- "$(dirname -- "$0")"; pwd)"
+
+cp .config "$PREFIX"/buildroot/.
+(
+cd "$PREFIX"/buildroot
+"$PREFIX"/packages/add.sh
+make savedefconfig
+)
+cp "$PREFIX"/buildroot/defconfig .config

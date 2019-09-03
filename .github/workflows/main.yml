@@ -13,6 +13,9 @@ jobs:
       run: echo Hello, world!
     - name: Run a multi-line script
       run: |
+        mount
+        cat /proc/cpuinfo
+        id
         ls -la /
         ps aux
         echo Add other actions to build,

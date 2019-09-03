@@ -15,6 +15,9 @@ jobs:
       run: |
         mount
         cat /proc/cpuinfo
+        pwd
+        pwd -P
+        pwd -L
         df
         df -h
         id

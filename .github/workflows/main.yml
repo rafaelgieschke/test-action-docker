@@ -18,8 +18,9 @@ jobs:
         pwd
         pwd -P
         pwd -L
-        ls -la /mnt
-        ls -laR /mnt
+        cat /mnt/DATALOSS_WARNING_README.txt
+        ls -la /mnt || :
+        ls -laR /mnt || :
         df
         df -h
         id

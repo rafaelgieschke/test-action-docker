@@ -3,7 +3,17 @@
 PREFIX="$(cd -- "$(dirname -- "$0")"; pwd)"
 
 cp kernel-config.append "$PREFIX"/buildroot
+
+"$PREFIX"/make-menuconfig linux-savedefconfig
+if ! test -f kernel.defconfig.old; then
+  cp "$PREFIX"/buildroot/output/build/linux-*/defconfig kernel.defconfig.old
+fi
+
 "$PREFIX"/make-menuconfig linux-menuconfig
+
+"$PREFIX"/make-menuconfig linux-savedefconfig
+cp "$PREFIX"/buildroot/output/build/linux-*/defconfig kernel.defconfig
+git diff --no-index kernel.defconfig.old kernel.defconfig
 
 set -x
 # TODO: Copy back kernel .config/defconfig to kernel-config.append

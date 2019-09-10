@@ -1,5 +1,9 @@
 #!/bin/sh
 
+if test "$#" -eq 0; then set -- menuconfig; fi
+
 SRC="$(cd -- "$(dirname -- "$0")"; pwd)"
 cd ../buildroot
-make BR2_EXTERNAL="$SRC" menuconfig
+
+set -x
+PERL_MM_OPT= make BR2_EXTERNAL="$SRC" "$@"

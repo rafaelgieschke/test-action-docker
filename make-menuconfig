@@ -2,10 +2,11 @@
 
 PREFIX="$(cd -- "$(dirname -- "$0")"; pwd)"
 
-cp .config "$PREFIX"/buildroot/.
+cp .config "$PREFIX"/buildroot/defconfig
 (
 cd "$PREFIX"/buildroot
-"$PREFIX"/packages/add.sh
+"$PREFIX"/packages/add.sh defconfig BR2_DEFCONFIG=defconfig
+"$PREFIX"/packages/add.sh "$@"
 make savedefconfig
 )
 cp "$PREFIX"/buildroot/defconfig .config

@@ -1,0 +1,9 @@
+#!/bin/sh
+
+PREFIX="$(cd -- "$(dirname -- "$0")"; pwd)"
+
+cp kernel-config.append "$PREFIX"/buildroot
+"$PREFIX"/make-menuconfig linux-menuconfig
+
+set -x
+# TODO: Copy back kernel .config/defconfig to kernel-config.append

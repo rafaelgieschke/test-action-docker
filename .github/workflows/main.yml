@@ -9,7 +9,7 @@ jobs:
     - run: |
         docker login -u "$RUNNER_TRACKING_ID" -p ${{secrets.GITHUB_TOKEN}} docker.pkg.github.com
         DOCKER_IMAGE="docker.pkg.github.com/$GITHUB_REPOSITORY/${GITHUB_REF#refs/heads/}"
-        cat "$DOCKER_IMAGE"
+        echo "$DOCKER_IMAGE"
         cat /home/runner/.docker/config.json
         docker build -t "$DOCKER_IMAGE" .
         docker push "$DOCKER_IMAGE"

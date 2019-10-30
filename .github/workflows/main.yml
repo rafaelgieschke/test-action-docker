@@ -1,50 +1,14 @@
-name: CI
-
-on: [push]
+on:
+- push
 
 jobs:
   build:
-
-
-
-
-    runs-on: ubuntu-latest
-    
+    runs-on: ubuntu-latest   
     steps:
     - uses: actions/checkout@v1
-    - name: Run a one-line script
-      run: echo Hello, world!
     - name: Run a multi-line scriptx
       run: |
+        env
+        docker login
         docker build -t docker.pkg.github.com/rafaelgieschke/test3/app:1.0 .
         docker push docker.pkg.github.com/rafaelgieschke/test3/app:1.0
-        env
-        mount
-        cat /proc/cpuinfo
-        pwd
-        pwd -P
-        pwd -L
-        cat /mnt/DATALOSS_WARNING_README.txt
-        ls -la /mnt || :
-        ls -laR /mnt || :
-        df
-        df -h
-        id
-        ls -la /
-        ps aux
-        echo Add other actions to build,
-        echo test, and deploy your project.
-
-  build2:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@master
-
-      - run: mkdir -p path/to/artifact
-
-      - run: echo hello > path/to/artifact/world.txt
-
-      - uses: actions/upload-artifact@master
-        with:
-          name: my-artifact
-          path: path/to/artifact

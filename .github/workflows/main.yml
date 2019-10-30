@@ -6,10 +6,13 @@ jobs:
     runs-on: ubuntu-latest   
     steps:
     - uses: actions/checkout@v1
+    - env:
+        GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
     - run: |
         echo "$0"
         cat "$0"
-        docker login -u "$RUNNER_TRACKING_ID" -p ${{secrets.GITHUB_TOKEN}} docker.pkg.github.com
+        docker login -u "$RUNNER_TRACKING_ID" -p "$GITHUB_TOKEN" docker.pkg.github.com
+        env
         DOCKER_IMAGE="docker.pkg.github.com/$GITHUB_REPOSITORY/${GITHUB_REF#refs/heads/}"
         echo "$DOCKER_IMAGE"
         cat /home/runner/.docker/config.json

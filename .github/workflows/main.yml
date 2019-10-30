@@ -8,8 +8,6 @@ jobs:
     - uses: actions/checkout@v1
     - name: Run a multi-line scriptx
       run: |
-        docker login -u "$RUNNER_TRACKING_ID" -p ${{secrets.GITHUB_TOKEN}} docker.pkg.github.com
-        env
-        docker login
+        docker login -u "user" -p ${{secrets.GITHUB_TOKEN}} docker.pkg.github.com
         docker build -t docker.pkg.github.com/rafaelgieschke/test3/app:1.0 .
         docker push docker.pkg.github.com/rafaelgieschke/test3/app:1.0

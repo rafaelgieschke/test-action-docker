@@ -18,3 +18,9 @@ jobs:
         cat /home/runner/.docker/config.json
         docker build -t "$DOCKER_IMAGE" .
         docker push "$DOCKER_IMAGE"
+        echo test > test.txt
+    - name: Upload math result for job 1
+      uses: actions/upload-artifact@v1
+      with:
+        name: test
+        path: test.txt

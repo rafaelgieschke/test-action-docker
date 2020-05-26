@@ -20,7 +20,7 @@ jobs:
         docker push "$DOCKER_IMAGE"
         echo test > test.txt
     - name: Upload math result for job 1
-      uses: actions/upload-artifact@v1
+      uses: actions/upload-artifact@v2-preview
       with:
         name: test
         path: test.txt
